@@ -69,34 +69,34 @@ void APakmania3DCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindAxis("LookUpRate", this, &APakmania3DCharacter::LookUpAtRate);
 
 	// handle touch devices
-	PlayerInputComponent->BindTouch(IE_Pressed, this, &APakmania3DCharacter::TouchStarted);
-	PlayerInputComponent->BindTouch(IE_Released, this, &APakmania3DCharacter::TouchStopped);
+	//PlayerInputComponent->BindTouch(IE_Pressed, this, &APakmania3DCharacter::TouchStarted);
+	//PlayerInputComponent->BindTouch(IE_Released, this, &APakmania3DCharacter::TouchStopped);
 
 	// VR headset functionality
-	PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APakmania3DCharacter::OnResetVR);
+	//PlayerInputComponent->BindAction("ResetVR", IE_Pressed, this, &APakmania3DCharacter::OnResetVR);
 }
 
 
-void APakmania3DCharacter::OnResetVR()
-{
-	// If Pakmania3D is added to a project via 'Add Feature' in the Unreal Editor the dependency on HeadMountedDisplay in Pakmania3D.Build.cs is not automatically propagated
-	// and a linker error will result.
-	// You will need to either:
-	//		Add "HeadMountedDisplay" to [YourProject].Build.cs PublicDependencyModuleNames in order to build successfully (appropriate if supporting VR).
-	// or:
-	//		Comment or delete the call to ResetOrientationAndPosition below (appropriate if not supporting VR)
-	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
-}
+//void APakmania3DCharacter::OnResetVR()
+//{
+//	// If Pakmania3D is added to a project via 'Add Feature' in the Unreal Editor the dependency on HeadMountedDisplay in Pakmania3D.Build.cs is not automatically propagated
+//	// and a linker error will result.
+//	// You will need to either:
+//	//		Add "HeadMountedDisplay" to [YourProject].Build.cs PublicDependencyModuleNames in order to build successfully (appropriate if supporting VR).
+//	// or:
+//	//		Comment or delete the call to ResetOrientationAndPosition below (appropriate if not supporting VR)
+//	UHeadMountedDisplayFunctionLibrary::ResetOrientationAndPosition();
+//}
 
-void APakmania3DCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
-{
-		Jump();
-}
+//void APakmania3DCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
+//{
+//		Jump();
+//}
 
-void APakmania3DCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
-{
-		StopJumping();
-}
+//void APakmania3DCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location)
+//{
+//		StopJumping();
+//}
 
 void APakmania3DCharacter::TurnAtRate(float Rate)
 {
