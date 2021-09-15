@@ -2,8 +2,11 @@
 
 
 #include "Enemy.h"
+
+#include "AITypes.h"
 #include "Components/SphereComponent.h"
 #include "Pakmania3DCharacter.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -16,6 +19,8 @@ AEnemy::AEnemy()
 	AggroSphere->InitSphereRadius(1000.f);
 
 	bIsLookingForTarget = true;
+
+	GetCharacterMovement()->MaxWalkSpeed = (GetCharacterMovement()->MaxWalkSpeed / 3.f);
 }
 
 // Called when the game starts or when spawned
@@ -60,4 +65,5 @@ void AEnemy::AggroSphereOnOverlapEnd(UPrimitiveComponent* OverlappedComponent, A
 		APakmania3DCharacter* PlayerChar = Cast<APakmania3DCharacter>(OtherActor);
 	}
 }
+
 
