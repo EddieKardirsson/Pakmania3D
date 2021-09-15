@@ -45,6 +45,10 @@ APakmania3DCharacter::APakmania3DCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+
+	bSaveAttack = false;
+	bIsAttacking = false;
+	AttackCount = 0;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -56,6 +60,9 @@ void APakmania3DCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	check(PlayerInputComponent);
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	PlayerInputComponent->BindAction("Attack", IE_Pressed, this, &APakmania3DCharacter::Attack);
+
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &APakmania3DCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &APakmania3DCharacter::MoveRight);
@@ -138,3 +145,4 @@ void APakmania3DCharacter::MoveRight(float Value)
 		AddMovementInput(Direction, Value);
 	}
 }
+

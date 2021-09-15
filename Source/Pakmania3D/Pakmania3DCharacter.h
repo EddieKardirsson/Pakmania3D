@@ -29,6 +29,15 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "PlayerAttack")
+	bool bSaveAttack;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "PlayerAttack")
+	bool bIsAttacking;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "PlayerAttack")
+	int32 AttackCount;
+
 protected:
 
 	/** Resets HMD orientation in VR. */
@@ -70,5 +79,10 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void Attack();
+
+
 };
 
